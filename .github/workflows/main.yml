@@ -20,4 +20,4 @@ jobs:
       - name: build app
         run: npm run build --if-present
       - name: deploy
-        run: npm preview
+        run: npm run preview
