@@ -23,6 +23,10 @@ jobs:
         run: cd dist
       - name: git init
         run: git init
+      - name: git config name
+        run: git config --global user.name 'mycInk'
+      - name: git config email
+        run: git config --global user.email 'mycInk@gmail.com'
       - name: git config
         run: git checkout -b master
       - name: git add
