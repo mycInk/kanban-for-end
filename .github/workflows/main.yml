@@ -19,5 +19,17 @@ jobs:
         run: npm ci
       - name: build app
         run: npm run build --if-present
-      - name: deploy
-        run: npm run preview
+      - name: enter the dist directory
+        run: cd dist
+      - name: git init
+        run: git init
+      - name: git config
+        run: git checkout -b main
+      - name: git add
+        run: git add -A
+      - name: git commit
+        run: git commit -m 'deploy'
+      - name: git push
+        run: git push -f git@github.com:mycInk/kanban-for-end.git main:gh-pages
+      - name: cd back
+        run: cd -
