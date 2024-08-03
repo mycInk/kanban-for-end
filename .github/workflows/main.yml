@@ -24,7 +24,7 @@ jobs:
       - name: git init
         run: git init
       - name: git config
-        run: git checkout -b main
+        run: git checkout -b master
       - name: git add
         run: git add -A
       - name: git commit
