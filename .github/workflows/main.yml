@@ -28,7 +28,7 @@ jobs:
       - name: git config email
         run: git config --global user.email 'mycInk@gmail.com'
       - name: git config
-        run: git checkout -b master
+        run: git checkout -b main
       - name: git add
         run: git add -A
 #      - name: git commit
