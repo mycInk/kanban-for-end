@@ -7,7 +7,7 @@ jobs:
     runs-on: windows-latest
     strategy:
       matrix:
-        node-version: [20.X]
+        node-version: [20.x]
     steps:
       - uses: actions/checkup@v4
       - name: install nodejs
