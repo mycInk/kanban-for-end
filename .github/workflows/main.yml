@@ -36,4 +36,4 @@ jobs:
 #      - name: git push
 #        run: git push -f git@github.com:mycInk/kanban-for-end.git main:gh-pages
       - name: cd back
-        run: cd -
+        run: cd ./
