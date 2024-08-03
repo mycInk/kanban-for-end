@@ -9,7 +9,7 @@ jobs:
       matrix:
         node-version: [20.x]
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - name: install nodejs
         uses: actions/setup-node@v3
         with:
@@ -28,7 +28,7 @@ jobs:
       - name: git config email
         run: git config --global user.email 'mycInk@gmail.com'
       - name: git config
-        run: git checkout -b main
+        run: git checkout -b master
       - name: git add
         run: git add -A
 #      - name: git commit
