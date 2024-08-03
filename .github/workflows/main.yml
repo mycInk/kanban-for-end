@@ -29,11 +29,5 @@ jobs:
         run: git config --global user.email 'mycInk@gmail.com'
       - name: git config
         run: git checkout -b master
-      - name: git add
-        run: git add -A
-      - name: git commit
-        run: git commit -m 'deploy'
-      - name: git push
-        run: git push -f git@github.com:mycInk/kanban-for-end.git main:gh-pages
       - name: cd back
         run: cd ./
