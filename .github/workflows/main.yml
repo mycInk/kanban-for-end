@@ -9,7 +9,7 @@ jobs:
       matrix:
         node-version: [20.x]
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v3
       - name: install nodejs
         uses: actions/setup-node@v3
         with:
@@ -31,9 +31,9 @@ jobs:
         run: git checkout -b master
       - name: git add
         run: git add -A
-      - name: git commit
-        run: git commit -m 'deploy'
-      - name: git push
-        run: git push -f git@github.com:mycInk/kanban-for-end.git main:gh-pages
+#      - name: git commit
+#        run: git commit -m 'deploy'
+#      - name: git push
+#        run: git push -f git@github.com:mycInk/kanban-for-end.git main:gh-pages
       - name: cd back
         run: cd -
