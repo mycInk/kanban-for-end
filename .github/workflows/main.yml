@@ -15,7 +15,6 @@ jobs:
         with:
           node-version: ${{matrix.node-version}}
           cache: "npm"
-          cache-dependency-path: "./for-end/package-lock.json"
       - name: install deps
         run: npm ci
       - name: build app
