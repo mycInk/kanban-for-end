@@ -23,5 +23,5 @@ jobs:
         uses: JamesIves/github-pages-deploy-action@v4
         with:
           branch: gh-pages
-          token: ${{ secrets.GITHUB_TOKEN }}
+          ssh-key: ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIFykVy4HueILLdO4z4zgTm83Bc+wdn4OT2smYu5yCC/J 231250142@smail.nju.edu.cn
           folder: dist
