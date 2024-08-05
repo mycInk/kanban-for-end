@@ -1,11 +1,11 @@
-import './App.css'
-function Login()
+import './css/App.css'
+function SignUp()
 {
     return (
-        <div className="loginblock">
+        <div className="signupblock">
         <br />
         <h1>
-            登录 Login
+            注册 SignUp
         </h1>
         <br />
         <form action="">
@@ -25,20 +25,22 @@ function Login()
         />
         <br />
         <br />
+            ConFirm Password:{' '}
+        <input
+          defaultValue="password"
+          name="ConFirm Password"
+          type="text"
+        />
+        <br />
+        <br />
         <div className='multibuttonblock'>
             <button type="signup" className='signupbutton' onClick={ToSignUp}>注 册</button>
-            <button type="signin" className='signinbutton' onClick={ToSignIn}>登 录</button>
         </div>
       </form>
-</div>
-    );
+      </div>)
     function ToSignUp()
-    {
-        return "location.href='./signup'";
-    }
-    function ToSignIn()
     {
         return "location.href='./dashboard'";
     }
 }
-export default Login
+export default SignUp
