@@ -1,4 +1,4 @@
-import './css/App.css'
+import './css/signin.css'
 function SignIn()
 {
     return (
@@ -8,8 +8,9 @@ function SignIn()
             登录 Login
         </h1>
         <br />
-        <form action="">
-            Account:{' '}
+        <form onSubmit={e => {
+        e.preventDefault();}}>
+        Account:{' '}
         <input
           defaultValue="account"
           name="Account"
@@ -21,24 +22,24 @@ function SignIn()
         <input
           defaultValue="password"
           name="Password"
-          type="text"
+          type="password"
         />
         <br />
         <br />
         <div className='multibuttonblock'>
-            <button type="signup" className='signupbutton' onClick={ToSignUp}>注 册</button>
-            <button type="signin" className='signinbutton' onClick={ToSignIn}>登 录</button>
+            <button className='signupbutton' onClick={ToSignUp}>注 册</button>
+            <button className='signinbutton' onClick={ToSignIn}>登 录</button>
         </div>
       </form>
 </div>
     );
-    function ToSignUp()
-    {
-        return "location.href='./signup'";
-    }
-    function ToSignIn()
-    {
-        return "location.href='./dashboard'";
-    }
 }
+function ToSignUp()
+{
+    window.location.href="./signup";
+}
+function ToSignIn()
+{
+    window.location.href="./dashboard";
+    }
 export default SignIn

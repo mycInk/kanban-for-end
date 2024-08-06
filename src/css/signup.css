@@ -1,0 +1,42 @@
+.signupblock {
+    text-align: center;
+    border: 1px solid rgb(44, 44, 44);
+    border-radius: 6px;
+    width: 500px;
+    height: 300px;
+    position: absolute;
+    display: block;
+    align-items: center;
+    align-self: center;
+    justify-content: center;
+    line-height: 1;
+    color: rgb(44, 44, 44);
+    background: rgb(44, 44, 44);
+    margin: auto;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 1;
+}
+  .multibuttonblock {
+    background-color: rgba(65, 64, 64, 0);
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+a, abbr, acronym, address, applet, big, blockquote, body, caption, cite,
+code, dd, del, dfn, div, dl, dt, em, fieldset, form, h1, h2, h3, h4, h5,
+h6, html, iframe, img, ins, kbd, label, legend, li, object, ol, p, pre,
+q, s, samp, small, span, strike, strong, sub, sup,
+table, tbody, td, tfoot, th, thread, tr, tt, ul, var {
+  margin: 0;
+  padding: 0;
+  outline: 0;
+  font-weight: inherit;
+  font-style: inherit;
+  font-family: inherit;
+  font-size: 110%;
+  color: white;
+  vertical-align: baseline;
+}

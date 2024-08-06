@@ -1,4 +1,8 @@
-import './css/App.css'
+import './css/signup.css'
+function ToSignUp()
+{
+  window.location.href='./dashboard';
+}
 function SignUp()
 {
     return (
@@ -8,7 +12,8 @@ function SignUp()
             注册 SignUp
         </h1>
         <br />
-        <form action="">
+        <form onSubmit={e => {
+            e.preventDefault();}}>
             Account:{' '}
         <input
           defaultValue="account"
@@ -38,9 +43,5 @@ function SignUp()
         </div>
       </form>
       </div>)
-    function ToSignUp()
-    {
-        return "location.href='./dashboard'";
-    }
 }
 export default SignUp
