@@ -1,92 +1,121 @@
 import './output.css'
 import {useState} from "react";
-import mongoose, { Schema } from 'mongoose';
+import * as axios from "axios";
+import { md5 } from 'js-md5';
+import { message } from 'antd';
 function SignUp()
 {
-  try
-  {
-    mongoose.connect("mongodb+srv://lichenchen794:Chen0014@mycluster.wi6j1th.mongodb.net/?retryWrites=true&w=majority&appName=MyCluster", { useNewUrlParser: true });
-  }catch(error)
-  {
-    console.log(error);
-  }
   const [account, setAccount] = useState("");
   const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
+  const [messageApi, contextHolder] = message.useMessage();
   async function ToSignUp()
-{
-    mongoose.connection.once('open',()=>{
-      console.log('数据库连接成功……')
-  })
-    mongoose.connection.once('close',()=>{
-      console.log('数据库断开……')
-  })
-  let UserSchema=new Schema({
-    uID: Number,
-    Account: String,
-    Password: String
-  })
-  var UserModle = mongoose.model('User',UserSchema)
-  UserModle.create({
-    uID:String(Math.floor(Math.random*10000)),
-    Account: account,
-    Password: password
-  },(err,docs)=>{
-    if(!err){
-        console.log('插入成功'+docs)
+  {
+    if(password !== confirmPassword)
+    {
+      messageApi.open({
+        type: 'error',
+        content: '两次输入的密码不一致',
+      });
+      return;
     }
-})
-    setAccount("");
-    setPassword("");
-  window.location.href='./dashboard';
-}
+    if(account === "" || password === "")
+    {
+      messageApi.open({
+        type: 'error',
+        content: '账号或密码不能为空',
+      });
+      return;
+    }
+    const client = axios.default;
+    const NewUser = new URLSearchParams();
+    NewUser.append('uid', String(Math.floor(Math.random()*100000000)));
+    NewUser.append('Account', account);
+    NewUser.append('Password', md5(password));
+    NewUser.append('Name', account);
+    client.post('http://127.0.0.1:7001/signup/', NewUser).then(function (response) {
+      console.log(response);
+    });
+    window.location.href='./dashboard';
+  }
     return (
-        <div className="bg-black  flex items-center justify-center min-h-screen">
-          <div className="bg-zinc-900 p-8 rounded-lg shadow-lg">
+      <>
+      {contextHolder}
+        <div className="bg-gradient-to-b  from-cyan-500 to-indigo-500  flex items-center justify-center min-h-screen">
+          <div className="bg-zinc-900 bg-opacity-50 p-24 rounded-lg shadow-lg">
         <br />
         <div className="flex items-center justify-around"><div>
-        <h1 className="text-3xl">
-            注册 SignUp
-        </h1>
+            <h1 className="text-5xl text-white">
+                注册 SignUp
+            </h1>
         </div></div>
         <br />
-        <form onSubmit={e => {
-            e.preventDefault();}}>
+        <br />
+        <form className='text-white text-3xl' onSubmit={e=>{
+          e.preventDefault();
+        }}>
             Account:{' '}
         <input
-          className='rounded-full text-black'
-          defaultValue="account"
+          className='rounded-full text-zinc-500 focus:text-black'
           name="Account"
           type="text"
+          defaultValue="账号"
+          onFocus={e=>{if(e.target.value =='账号')
+            {
+                  e.target.value='';
+              }}}
+            onBlur={e=>{if(e.target.value =='')
+              {
+                  e.target.value='账号';
+              }}}
           onChange={event => setAccount(event.target.value)}
         />
         <br />
         <br />
             Password:{' '}
         <input
-          className='rounded-full text-black'
-          defaultValue="password"
+          className='rounded-full text-zinc-500 focus:text-black'
           name="Password"
-          type="password"
+          type="text"
+          defaultValue="密码"
+          onFocus={e=>{if(e.target.value =='密码')
+            {
+                  e.target.value='';
+              }}}
+            onBlur={e=>{if(e.target.value =='')
+              {
+                  e.target.value='密码';
+              }}}
           onChange={event => setPassword(event.target.value)}
         />
         <br />
         <br />
             ConFirm Password:{' '}
         <input
-          className='rounded-full text-black'
-          defaultValue="password"
+          className='rounded-full text-zinc-500 focus:text-black'
           name="ConFirm Password"
-          type="password"
+          defaultValue="确认密码"
+          type="text"
+          onFocus={e=>{if(e.target.value =='确认密码')
+            {
+                  e.target.value='';
+              }}}
+            onBlur={e=>{if(e.target.value =='')
+              {
+                  e.target.value='确认密码';
+              }}}
+          onChange={event => setConfirmPassword(event.target.value)}
         />
         <br />
         <br />
         <div className="flex items-center justify-around">
         <div>
-            <button type="signup" className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full duration-100" onClick={ToSignUp}>注 册</button>
+            <button type="signup" className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-14 rounded-full duration-100" onClick={ToSignUp}>注 册</button>
         </div>
         </div>
       </form>
       </div>
-      </div>)
+      </div>
+      </>)
 }
 export default SignUp

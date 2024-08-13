@@ -5,6 +5,9 @@ import ErrorPage from './error-page.jsx'
 import SignIn from "./signin.jsx";
 import SignUp from "./signup.jsx";
 import Dashboard from "./dashboard.jsx";
+import Project from "./project.jsx";
+import Mission from "./mission.jsx";
+import './output.css'
 import {
   createBrowserRouter,
   RouterProvider,
@@ -17,6 +20,10 @@ const router = createBrowserRouter([
     errorElement: <ErrorPage />,
   },
   {
+    path: "/welcome",
+    element: <Welcome />,
+  },
+  {
     path: "/signin",
     element: <SignIn />,
   },
@@ -27,6 +34,14 @@ const router = createBrowserRouter([
   {
     path: "/dashboard",
     element: <Dashboard />,
+  },
+  {
+    path: "/project",
+    element: <Project />,
+  },
+  {
+    path: "/mission",
+    element: <Mission />,
   }
 ]);
 ReactDOM.createRoot(document.getElementById("root")).render(
